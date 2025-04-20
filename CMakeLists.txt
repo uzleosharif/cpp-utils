@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 4.0.0 FATAL_ERROR)
 set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD "a9e1cf81-9932-4810-974b-6eccaf14e457")
 set(CMAKE_CXX_FLAGS "-stdlib=libc++")
 
-project(utils
+project(uzleo.utils
   VERSION 0.1.0
   LANGUAGES CXX
 )
@@ -47,21 +47,19 @@ target_link_libraries(utils
 install(TARGETS utils
   EXPORT utilsTargets
   FILE_SET modules
-    DESTINATION lib/uzleo_utils/miu
+    DESTINATION lib/uzleo/utils/miu
   LIBRARY
-    DESTINATION lib
+    DESTINATION lib/uzleo/
   ARCHIVE
-    DESTINATION lib/static
-  CXX_MODULES_BMI
-    DESTINATION lib/uzleo_utils/bmi
+    DESTINATION lib/uzleo/static
 )
 install(EXPORT utilsTargets
-  FILE uzleo_utilsTargets.cmake
+  FILE utilsTargets.cmake
   NAMESPACE uzleo::
-  DESTINATION lib/cmake/
+  DESTINATION lib/cmake/uzleo/
   CXX_MODULES_DIRECTORY modules
 )
-install(FILES cmake/uzleo_utilsConfig.cmake
-  DESTINATION lib/cmake/
+install(FILES cmake/utilsConfig.cmake
+  DESTINATION lib/cmake/uzleo/
 )
 
