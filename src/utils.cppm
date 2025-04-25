@@ -9,7 +9,7 @@ import fmt;
 
 namespace rng = std::ranges;
 
-export namespace uzleo::utils {
+namespace uzleo::utils {
 
 template <class T>
 concept ExplicitlyByteConvertible = requires(T t) {
@@ -26,7 +26,7 @@ concept ByteConvertibleView =
     (std::same_as<std::initializer_list<std::uint8_t>, R> or rng::view<R>);
 
 /// This is currently only big-endian.
-template <std::size_t kNumBits, bool kBigEndian = true>
+export template <std::size_t kNumBits, bool kBigEndian = true>
 class UintNBitsType final {
   static_assert(kBigEndian,
                 "Only big-endian big-number datatypes are supported so far.");
@@ -81,7 +81,7 @@ class UintNBitsType final {
   std::array<std::byte, kNumBits / 8> m_data{};
 };
 
-template <class T>
+export template <class T>
 class StackType final {
  public:
   constexpr auto Pop(std::size_t const num_of_elements = 1) {
